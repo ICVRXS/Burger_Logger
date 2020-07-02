@@ -4,7 +4,24 @@
 {{/each}}
 </ul>
 
-<form action="/api/burgers" method="POST">
+<form id="create-burger" action="/api/burgers" method="POST">
     <input type="text" name="burger_name">
-    <button>Add Burger</button>
+    <button>ADD BURGER</button>
 </form>
+
+<script>
+    $("#create-burger").on("submit", (e) => {
+        e.preventDefault();
+        const burgerData = {
+            burger_name: $('[name="burger_name"]').val()
+        };
+
+        $.ajax({
+            url: "/api/burgers",
+            method: "POST",
+            data: burgerData
+        }).then(() => {
+            location.reload();
+        });
+    });
+</script>
