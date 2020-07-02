@@ -4,11 +4,11 @@ const burger = {
     all(columns, cb){
         orm.selectAll(columns, "burgers", cb);
     },
-    update(data, cb){
-        orm.insertOne("burgers", data, cb);
-    },
-    create(){
+    update(){
 
+    },
+    create(data, cb){
+        orm.insertOne("burgers", data, cb);
     }
 };
 
