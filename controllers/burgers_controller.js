@@ -1,11 +1,9 @@
-const express = require("express");
-const burgers = require("../models/burger");
+const router = require("express").Router();
 const Burger = require("../models/burger");
-
-const router = express.Router();
 
 router.get("/", (req, res) => {
     Burger.all("*", (results) => {
+        console.log(results);
         res.render("index", {
             burgers: results
         });
@@ -13,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-    Burger.create(res.body, (result) => {
+    Burger.create(req.body, (result) => {
         console.log(result);
         res.json({id: result.insertId});
     });
