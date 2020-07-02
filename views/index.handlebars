@@ -1,6 +1,6 @@
 <ul>
 {{#each burgers}}
-    <li>{{burger_name}}</li>
+    <li>{{burger_name}} <button class="eat_btn" data-id="{{id}}">EAT BURGER</button></li>
 {{/each}}
 </ul>
 
@@ -19,6 +19,22 @@
         $.ajax({
             url: "/api/burgers",
             method: "POST",
+            data: burgerData
+        }).then(() => {
+            location.reload();
+        });
+    });
+
+    $(".eat_btn").on("click", function(){
+        const burgerId = $(this).data("id");
+        const updateRoute = "/api/burgers/"+burgerId;
+        const burgerData = {
+            devoured: 1
+        };
+
+        $.ajax({
+            url: updateRoute,
+            method: "PUT",
             data: burgerData
         }).then(() => {
             location.reload();

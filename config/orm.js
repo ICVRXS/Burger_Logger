@@ -13,8 +13,11 @@ const orm = {
             cb(results);
         });
     },
-    updateOne(){
-    
+    updateOne(tableName, newValue, targetId, cb){
+        connection.query("UPDATE ?? SET ? WHERE id = ?", [tableName, newValue, targetId], (err, results) => {
+            if(err) throw err;
+            cb(results);
+        });
     }
 };
 

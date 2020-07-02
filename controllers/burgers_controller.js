@@ -15,4 +15,10 @@ router.post("/api/burgers", (req, res) => {
     });
 });
 
+router.put("/api/burgers/:id", (req,res) => {
+    Burger.update(req.body, req.params.id, (result) => {
+        res.end();
+    });
+});
+
 module.exports = router;
