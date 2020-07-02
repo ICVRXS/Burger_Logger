@@ -1,26 +1,20 @@
 const connection = require("./connection");
 
-function selectAll(){
-
-};
-
-function insertOne(){
-
-};
-
-function updateOne(){
-
-};
-
 const orm = {
-    all: function(){
-
+    selectAll(columns, tableName, cb){
+        connection.query("SELECT ?? FROM ??", [columns, tableName], (err, results) => {
+            if(err) throw err;
+            cb(results);
+        });
     },
-    create: function(){
-
+    insertOne(tableName, values, cb){
+        connection.query("INSERT INTO ?? SET ?", [tableName, values], (err, results) => {
+            if(err) throw err;
+            cb(results);
+        });
     },
-    update: function(){
-
+    updateOne(){
+    
     }
 };
 
