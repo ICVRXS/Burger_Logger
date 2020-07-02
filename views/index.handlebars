@@ -1,6 +1,18 @@
+<h2>UNEATEN BURGERS</h2>
 <ul>
 {{#each burgers}}
+    {{#unless devoured}}
     <li>{{burger_name}} <button class="eat_btn" data-id="{{id}}">EAT BURGER</button></li>
+    {{/unless}}
+{{/each}}
+</ul>
+
+<h2>EATEN BURGERS</h2>
+<ul>
+{{#each burgers}}
+    {{#if devoured}}
+    <li>{{burger_name}}</li>
+    {{/if}}
 {{/each}}
 </ul>
 
